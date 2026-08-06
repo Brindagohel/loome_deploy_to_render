@@ -168,7 +168,7 @@ function ShoppingHeader() {
             <HousePlug className="h-4 w-4 text-white dark:text-neutral-900" />
           </div>
           <span className="font-serif font-semibold text-lg tracking-tight text-neutral-900 dark:text-white">
-            sleave
+            Loomé
           </span>
         </Link>
 

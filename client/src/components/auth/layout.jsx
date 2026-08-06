@@ -21,7 +21,7 @@ function AuthLayout() {
             <HousePlug className="h-4 w-4 text-white dark:text-neutral-900" />
           </div>
           <span className="font-serif text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white">
-            sleave
+            Loomé
           </span>
         </Link>
 
@@ -30,7 +30,7 @@ function AuthLayout() {
         </div>
 
         <p className="mt-6 text-center text-xs text-muted-foreground">
-          By continuing you agree to sleave&apos;s Terms of Service and Privacy Policy.
+          By continuing you agree to Loomé&apos;s Terms of Service and Privacy Policy.
         </p>
       </div>
     </div>

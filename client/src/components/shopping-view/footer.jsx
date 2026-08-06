@@ -98,7 +98,7 @@ function ShoppingFooter() {
         <div className="container mx-auto px-4 py-5 flex flex-col lg:flex-row items-center justify-between gap-3">
           <div className="text-center lg:text-left">
             <h3 className="text-base font-serif font-semibold text-white">
-              Join the <span style={{ color: CREAM }}>sleave</span> inner circle
+              Join the <span style={{ color: CREAM }}>Loomé</span> inner circle
             </h3>
             <p className="text-xs text-neutral-400 mt-0.5">
               Early drops, private sales & style edits, straight to your inbox.
@@ -146,7 +146,7 @@ function ShoppingFooter() {
               <HousePlug className="h-3.5 w-3.5 text-neutral-900" />
             </div>
             <span className="font-serif font-semibold text-sm tracking-tight text-white">
-              sleave
+              Loomé
             </span>
           </div>
           <p className="text-xs text-neutral-400 leading-relaxed max-w-xs">
@@ -224,7 +224,7 @@ function ShoppingFooter() {
         >
           <h4 className="text-xs font-semibold text-white mb-2 tracking-wide">GET IN TOUCH</h4>
           <ul className="space-y-1.5 text-xs text-neutral-400">
-            <li>support@sleave.com</li>
+            <li>support@Loomé.com</li>
             <li>+91 98765 43210</li>
             <li>Mon to Sat, 10am to 7pm</li>
           </ul>
@@ -235,7 +235,7 @@ function ShoppingFooter() {
       <div className="relative border-t border-white/10">
         <div className="container mx-auto px-4 py-2.5 flex flex-col sm:flex-row items-center justify-between gap-1">
           <p className="text-[11px] text-neutral-500">
-            (c) {new Date().getFullYear()} sleave. All rights reserved.
+            (c) {new Date().getFullYear()} Loomé. All rights reserved.
           </p>
           <p className="text-[11px] text-neutral-500">
             Designed with <span style={{ color: CREAM }}>care</span> for people who love good clothes.
