@@ -1,0 +1,24 @@
+
+
+
+const express = require("express");
+
+const {
+    handleImageUpload,
+    addNewProduct,
+    editProduct,
+    fetchAllProducts,
+    deleteProduct,  
+   } = require("../../controllers/admin/products-controller");
+
+const { upload } = require("../../helpers/cloudinary");
+
+const router = express.Router();
+
+router.post("/upload-image", upload.single("my_file"), handleImageUpload);
+router .post('/add' , addNewProduct);
+router .put('/edit/:id' , editProduct);
+router .get('/get' , fetchAllProducts);
+router .delete('/delete/:id' , deleteProduct);
+
+module.exports = router;
