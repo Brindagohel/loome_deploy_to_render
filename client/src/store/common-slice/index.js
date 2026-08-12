@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_URL } from "../../../config/api";
 
 const initialState = {
   isLoading: false,
@@ -9,7 +10,7 @@ const initialState = {
 export const getFeatureImages = createAsyncThunk(
   '/order/getFeatureImages',
   async () => {
-    const response = await axios.get("http://localhost:5000/api/common/feature/get");
+    const response = await axios.get(`${API_URL}/api/common/feature/get`);
     return response.data;
   }
 );
@@ -17,7 +18,7 @@ export const getFeatureImages = createAsyncThunk(
 export const addFeatureImages = createAsyncThunk(
   '/order/addFeatureImages',
   async (image) => {
-    const response = await axios.post("http://localhost:5000/api/common/feature/add",{
+    const response = await axios.post(`${API_URL}/api/common/feature/add`, {
       image
     });
     return response.data;
@@ -27,7 +28,7 @@ export const addFeatureImages = createAsyncThunk(
 export const deleteFeatureImage = createAsyncThunk(
   '/order/deleteFeatureImage',
   async (id) => {
-    const response = await axios.delete(`http://localhost:5000/api/common/feature/delete/${id}`);
+    const response = await axios.delete(`${API_URL}/api/common/feature/delete/${id}`);
     return response.data;
   }
 );

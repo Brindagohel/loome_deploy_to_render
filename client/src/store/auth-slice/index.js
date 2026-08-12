@@ -1,11 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL =
-    window.location.hostname === "localhost"
-        ? "http://localhost:5000"
-        : "https://loome-3136.onrender.com";
-
 const initialState = {
     isAuthenticated: false,
     isLoading: true,

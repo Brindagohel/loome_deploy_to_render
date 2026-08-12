@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_URL } from "../../../config/api";
 
 const initialState = {
     stats: null,
@@ -9,7 +10,7 @@ const initialState = {
 
 export const fetchDashboardStats = createAsyncThunk('adminDashboard/fetchDashboardStats', async () => {
 
-    const response = await axios.get(`http://localhost:5000/api/admin/dashboard/stats`);
+    const response = await axios.get(`${API_URL}/api/admin/dashboard/stats`);
 
     return response.data;
 

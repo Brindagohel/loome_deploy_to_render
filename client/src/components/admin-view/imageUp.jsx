@@ -6,7 +6,7 @@ import { Button } from "../ui/button";                          // ✅ added
 import { UploadCloudIcon, FileIcon, XIcon } from 'lucide-react';
 import axios from 'axios';
 import { Skeleton } from '../ui/skeleton';
-
+import { API_URL } from "../../config/api";
 
 function ProductImageUpload({ file, setFile, uploadedImageUrl, setUploadedImageUrl ,setImageLoadingState , imageLoadingState , isEditMode ,isCustomStyling = false}){
 
@@ -46,7 +46,7 @@ function ProductImageUpload({ file, setFile, uploadedImageUrl, setUploadedImageU
     try {
         const data = new FormData();
         data.append('my_file', file);
-        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/products/upload-image`, data);
+        const response = await axios.post(`${API_URL}/api/admin/products/upload-image`, data);
         if(response?.data?.success) {
             setUploadedImageUrl(response.data.result.url);
         }

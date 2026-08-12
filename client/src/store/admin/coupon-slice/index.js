@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_URL } from "../../../config/api";
 
 const initialState = {
     couponList: [],
@@ -9,7 +10,7 @@ const initialState = {
 
 export const addNewCoupon = createAsyncThunk('adminCoupon/addNewCoupon', async (formData) => {
 
-    const response = await axios.post(`http://localhost:5000/api/admin/coupon/add`, formData);
+    const response = await axios.post(`${API_URL}/api/admin/coupon/add`, formData);
 
     return response.data;
 
@@ -17,7 +18,7 @@ export const addNewCoupon = createAsyncThunk('adminCoupon/addNewCoupon', async (
 
 export const fetchAllCoupons = createAsyncThunk('adminCoupon/fetchAllCoupons', async () => {
 
-    const response = await axios.get(`http://localhost:5000/api/admin/coupon/get`);
+    const response = await axios.get(`${API_URL}/api/admin/coupon/get`);
 
     return response.data;
 
@@ -25,7 +26,7 @@ export const fetchAllCoupons = createAsyncThunk('adminCoupon/fetchAllCoupons', a
 
 export const editCoupon = createAsyncThunk('adminCoupon/editCoupon', async ({ id, formData }) => {
 
-    const response = await axios.put(`http://localhost:5000/api/admin/coupon/edit/${id}`, formData);
+    const response = await axios.put(`${API_URL}/api/admin/coupon/edit/${id}`, formData);
 
     return response.data;
 
@@ -33,7 +34,7 @@ export const editCoupon = createAsyncThunk('adminCoupon/editCoupon', async ({ id
 
 export const deleteCoupon = createAsyncThunk('adminCoupon/deleteCoupon', async (id) => {
 
-    const response = await axios.delete(`http://localhost:5000/api/admin/coupon/delete/${id}`);
+    const response = await axios.delete(`${API_URL}/api/admin/coupon/delete/${id}`);
 
     return response.data;
 

@@ -28,7 +28,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // CORS
-const allowedOrigins = process.env.CLIENT_BASE_URL
+// CORS
+const allowedOrigins = (process.env.CLIENT_BASE_URL || 'http://localhost:5173,http://localhost:5174')
     .split(',')
     .map(origin => origin.trim());
 
