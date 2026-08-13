@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useToast } from "@/hooks/use-toast";
 import { loginUser } from "@/store/auth-slice";
+import logo from "../../assets/logo.png";
 
 function AuthLogin() {
   const [formData, setFormData] = useState({

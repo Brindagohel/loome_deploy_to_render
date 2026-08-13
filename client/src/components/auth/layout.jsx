@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { HousePlug } from "lucide-react";
+import logo from "../../assets/logo.png";
 
 function AuthLayout() {
   return (
@@ -17,8 +17,12 @@ function AuthLayout() {
 
       <div className="relative z-10 w-full max-w-md">
         <Link to="/shop/home" className="mb-8 flex items-center justify-center gap-2 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-900 transition-transform group-hover:scale-105 dark:bg-white">
-            <HousePlug className="h-4 w-4 text-white dark:text-neutral-900" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105 dark:bg-white">
+           <img
+                       src={logo}
+                       alt="Loomé logo"
+                       className="h-9 w-9 object-contain transition-transform group-hover:scale-105"
+                     />
           </div>
           <span className="font-serif text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white">
             Loomé

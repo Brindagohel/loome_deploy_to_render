@@ -14,6 +14,7 @@ const initialFormData = {
   title: '',
   description: '',
   category: '',
+  gender: '',
   brand: '',
   price: '',
   salePrice: '',

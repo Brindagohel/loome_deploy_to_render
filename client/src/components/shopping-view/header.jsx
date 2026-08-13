@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { HousePlug, Menu, ShoppingCart, User, LogOut, Search, Heart } from "lucide-react";
+import {  Menu, ShoppingCart, User, LogOut, Search, Heart } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,6 +11,9 @@ import { logoutUser, resetTokenAddCredentials } from "@/store/auth-slice";
 import UserCartWrapper from "./cart-wrapper";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import { fetchWishlistItems } from "@/store/shop/wishlist-slice";
+import logo from "../../assets/logo.png";
+
+
 
 function MenuItems() {
 
@@ -164,20 +167,22 @@ function ShoppingHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-neutral-200/70 dark:border-neutral-800 bg-white/75 dark:bg-neutral-950/75 backdrop-blur-md transition-colors">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
+        <Link to="/shop/home" className="flex items-center gap-3 group">
+          <img
+            src={logo}
+            alt="Loomé logo"
+            className="h-9 w-9 object-contain transition-transform group-hover:scale-105"
+          />
 
-        <Link to="/shop/home" className="flex items-center gap-2 group">
-          <div className="h-8 w-8 rounded-lg bg-neutral-900 dark:bg-white flex items-center justify-center transition-transform group-hover:scale-105">
-            <HousePlug className="h-4 w-4 text-white dark:text-neutral-900" />
-          </div>
           <span className="font-serif font-semibold text-lg tracking-tight text-neutral-900 dark:text-white">
             Loomé
           </span>
         </Link>
-
+        
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="lg:hidden rounded-full">
-              <Menu className="h-5 w-5" />
+              <Menu className="h-7 w-7" />
               <span className="sr-only">Toggle header menu</span>
             </Button>
           </SheetTrigger>

@@ -142,6 +142,17 @@ export const addProductFormElements = [
     componentType: "textarea",
     placeholder: "Enter product description",
   },
+   {
+    label: "Gender",
+    name: "gender",
+    componentType: "select",
+    options: [
+      { id: "men", label: "Men" },
+      { id: "women", label: "Women" },
+      { id: "kids", label: "Kids" },
+      { id: "unisex", label: "Unisex" },
+    ],
+  },
   {
     label: "Category",
     name: "category",
@@ -253,6 +264,12 @@ export const brandOptionMap = {
 };
 
 export const filterOptions = {
+   gender: [
+    { id: "men", label: "Men" },
+    { id: "women", label: "Women" },
+    { id: "kids", label: "Kids" },
+    { id: "unisex", label: "Unisex" },
+  ],
   category: [
     { id: "men", label: "Men" },
     { id: "women", label: "Women" },
