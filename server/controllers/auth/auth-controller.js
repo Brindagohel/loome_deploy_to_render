@@ -82,23 +82,16 @@ const loginUser = async (req, res) => {
       });
     }
 
-   
     const token = jwt.sign(
-        { id: user._id, email: user.email, role: user.role, UserName: user.UserName }, // add UserName here
+        { id: user._id, email: user.email, role: user.role, UserName: user.UserName },
         process.env.JWT_SECRET,
         { expiresIn: "1d" }
      );
-   
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "lax",
-      maxAge: 24 * 60 * 60 * 1000,
-    });
 
     return res.status(200).json({
       success: true,
       message: "Login successful",
+      token,
       user: {
         id: user._id,
         UserName: user.UserName,
@@ -121,7 +114,7 @@ const loginUser = async (req, res) => {
 // LOGOUT USER
 // ========================
 const logoutUser = (req, res) => {
-  res.clearCookie("token").json({
+  return res.status(200).json({
     success: true,
     message: "Logged out successfully",
   });
@@ -131,7 +124,8 @@ const logoutUser = (req, res) => {
 // AUTH MIDDLEWARE
 // ========================
 const authMiddleware = (req, res, next) => {
-  const token = req.cookies.token;
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
 
   if (!token) {
     return res.status(401).json({
@@ -141,8 +135,7 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-   
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); // ← was "client_SECRET"
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {

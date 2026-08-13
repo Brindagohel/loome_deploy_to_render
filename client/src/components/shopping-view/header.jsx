@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { shoppingViewHeaderMenuItems } from "@/config";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { logoutUser } from "@/store/auth-slice";
+import { logoutUser, resetTokenAddCredentials } from "@/store/auth-slice";
 import UserCartWrapper from "./cart-wrapper";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import { fetchWishlistItems } from "@/store/shop/wishlist-slice";
@@ -58,7 +58,9 @@ function HeaderRightContent() {
   const wishlistCount = wishlistItems?.items?.length || 0;
 
   function handleLogout() {
-    dispatch(logoutUser()).then(() => navigate("/auth/login"));
+    dispatch(resetTokenAddCredentials());
+    sessionStorage.clear();
+    navigate("/auth/login");
   }
 
   useEffect(() => {

@@ -6,6 +6,7 @@ const initialState = {
     isAuthenticated: false,
     isLoading: true,
     user: null,
+    token: null,
 };
 
 export const registerUser = createAsyncThunk(
@@ -53,17 +54,44 @@ export const logoutUser = createAsyncThunk(
     }
 );
 
+// export const checkAuth = createAsyncThunk(
+//     "auth/checkauth",
+//     async (_, { rejectWithValue }) => {
+//         try {
+//             const response = await axios.get(
+//                 `${import.meta.env.VITE_API_URL}/api/auth/check-auth`,
+//                 {
+//                     withCredentials: true,
+//                     headers: {
+//                         "Cache-Control":
+//                             "no-store, no-cache, must-revalidate, proxy-revalidate",
+//                     },
+//                 }
+//             );
+
+//             return response.data;
+//         } catch (error) {
+//             return rejectWithValue(
+//                 error.response?.data || {
+//                     message: "Auth check failed",
+//                 }
+//             );
+//         }
+//     }
+// );
+
 export const checkAuth = createAsyncThunk(
     "auth/checkauth",
-    async (_, { rejectWithValue }) => {
+    async (token, { rejectWithValue }) => {
         try {
             const response = await axios.get(
                 `${import.meta.env.VITE_API_URL}/api/auth/check-auth`,
                 {
-                    withCredentials: true,
+                    
                     headers: {
                         "Cache-Control":
                             "no-store, no-cache, must-revalidate, proxy-revalidate",
+                        "Authorization": `Bearer ${token}`
                     },
                 }
             );
@@ -87,7 +115,14 @@ const authSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload;
             state.isAuthenticated = action.payload !== null;
+           
         },
+         resetTokenAddCredentials : (state)=>{
+                state.isAuthenticated = false;
+                state.user = null;
+                state.token = null;
+                sessionStorage.removeItem('token');
+            },
     },
 
     extraReducers: (builder) => {
@@ -118,12 +153,17 @@ const authSlice = createSlice({
                     ? action.payload.user
                     : null;
                 state.isAuthenticated = action.payload.success;
+                state.token = action.payload.success
+                    ? action.payload.token
+                    : null;
+                sessionStorage.setItem('token' , JSON.stringify(action.payload.token));
             })
 
             .addCase(loginUser.rejected, (state) => {
                 state.isLoading = false;
                 state.user = null;
                 state.isAuthenticated = false;
+                state.token = null;
             })
 
             .addCase(checkAuth.pending, (state) => {
@@ -152,6 +192,6 @@ const authSlice = createSlice({
     },
 });
 
-export const { setUser } = authSlice.actions;
+export const { setUser , resetTokenAddCredentials } = authSlice.actions;
 
 export default authSlice.reducer;
