@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_URL } from "../../../config/api";
+
 
 const initialState = {
     isLoading: false,
@@ -11,7 +11,7 @@ export const addNewAddress = createAsyncThunk(
     "/address/addNewAddress",
     async (formData) => {
         const response = await axios.post(
-            `${API_URL}/api/shop/address/add`,
+            `${import.meta.env.VITE_API_URL}/api/shop/address/add`,
             formData
         );
         return response.data;
@@ -22,7 +22,7 @@ export const fetchAllAddresses = createAsyncThunk(
     "/address/fetchAllAddresses",
     async (userId) => {
         const response = await axios.get(
-            `${API_URL}/api/shop/address/get/${userId}`
+            `${import.meta.env.VITE_API_URL}/api/shop/address/get/${userId}`
         );
         return response.data;
     }
@@ -32,7 +32,7 @@ export const editaAddress = createAsyncThunk(
     "/address/editaAddress",
     async ({ userId, addressId, formData }) => {
         const response = await axios.put(
-            `${API_URL}/api/shop/address/update/${userId}/${addressId}`,
+            `${import.meta.env.VITE_API_URL}/api/shop/address/update/${userId}/${addressId}`,
             formData
         );
         return response.data;
@@ -43,7 +43,7 @@ export const deleteAddress = createAsyncThunk(
     "/address/deleteAddress",
     async ({ userId, addressId }) => {
         const response = await axios.delete(
-            `${API_URL}/api/shop/address/delete/${userId}/${addressId}`
+            `${import.meta.env.VITE_API_URL}/api/shop/address/delete/${userId}/${addressId}`
         );
         return response.data;
     }
