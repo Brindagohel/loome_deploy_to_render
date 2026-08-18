@@ -150,7 +150,7 @@ export const addProductFormElements = [
       { id: "men", label: "Men" },
       { id: "women", label: "Women" },
       { id: "kids", label: "Kids" },
-      { id: "unisex", label: "Unisex" },
+
     ],
   },
   {
@@ -158,11 +158,13 @@ export const addProductFormElements = [
     name: "category",
     componentType: "select",
     options: [
-      { id: "men", label: "Men" },
-      { id: "women", label: "Women" },
-      { id: "kids", label: "Kids" },
+      { id: "topwear", label: "Topwear" },
+      { id: "bottomwear", label: "Bottomwear" },
+      { id: "dresses", label: "Dresses" },
       { id: "accessories", label: "Accessories" },
       { id: "footwear", label: "Footwear" },
+      { id : "co-ord set", label : "Co-ord Set" },
+      { id : "blazers", label : "Blazers" },
     ],
   },
   {
@@ -263,19 +265,45 @@ export const brandOptionMap = {
 
 };
 
+// export const filterOptions = {
+//    gender: [
+//     { id: "men", label: "Men" },
+//     { id: "women", label: "Women" },
+//     { id: "kids", label: "Kids" },
+//     { id: "unisex", label: "Unisex" },
+//   ],
+//   category: [
+//     { id: "men", label: "Men" },
+//     { id: "women", label: "Women" },
+//     { id: "kids", label: "Kids" },
+//     { id: "accessories", label: "Accessories" },
+//     { id: "footwear", label: "Footwear" },
+//   ],
+//   brand: [
+//     { id: "nike", label: "Nike" },
+//     { id: "adidas", label: "Adidas" },
+//     { id: "puma", label: "Puma" },
+//     { id: "levi", label: "Levi's" },
+//     { id: "zara", label: "Zara" },
+//     { id: "h&m", label: "H&M" },
+//   ],
+// };
+
 export const filterOptions = {
-   gender: [
+  gender: [
     { id: "men", label: "Men" },
     { id: "women", label: "Women" },
     { id: "kids", label: "Kids" },
-    { id: "unisex", label: "Unisex" },
+   
   ],
   category: [
-    { id: "men", label: "Men" },
-    { id: "women", label: "Women" },
-    { id: "kids", label: "Kids" },
+    { id: "topwear", label: "Topwear" },
+    { id: "bottomwear", label: "Bottomwear" },
+    { id: "dresses", label: "Dresses" },
     { id: "accessories", label: "Accessories" },
     { id: "footwear", label: "Footwear" },
+    { id : "co-ord set", label : "Co-ord Set" },
+    { id : "blazers", label : "Blazers" },
   ],
   brand: [
     { id: "nike", label: "Nike" },
@@ -284,6 +312,13 @@ export const filterOptions = {
     { id: "levi", label: "Levi's" },
     { id: "zara", label: "Zara" },
     { id: "h&m", label: "H&M" },
+  ],
+  price: [
+    { id: "0-50", label: "Under $50" },
+    { id: "50-100", label: "$50 - $100" },
+    { id: "100-200", label: "$100 - $200" },
+    { id: "200-500", label: "$200 - $500" },
+    { id: "500-100000", label: "Over $500" },
   ],
 };
 

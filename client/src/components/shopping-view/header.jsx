@@ -19,16 +19,23 @@ function MenuItems() {
 
   const navigate = useNavigate();
 
-  function handleNavigate(getCurrentMenuItem) {
-    sessionStorage.removeItem('filters')
-    const currentFilter = getCurrentMenuItem.id !== 'home'  && getCurrentMenuItem.id !== 'products'  && getCurrentMenuItem.id !== 'search' ?
-      {
-        category: [getCurrentMenuItem.id]
-      } : null
+ function handleNavigate(getCurrentMenuItem) {
+  sessionStorage.removeItem('filters')
 
-    sessionStorage.setItem('filters', JSON.stringify(currentFilter))
-    navigate(getCurrentMenuItem.path, { state: { fromMenu: Date.now() } });
+  const genderIds = ['men', 'women', 'kids'];
+  const categoryIds = ['accessories', 'footwear'];
+
+  let currentFilter = null;
+
+  if (genderIds.includes(getCurrentMenuItem.id)) {
+    currentFilter = { gender: [getCurrentMenuItem.id] };
+  } else if (categoryIds.includes(getCurrentMenuItem.id)) {
+    currentFilter = { category: [getCurrentMenuItem.id] };
   }
+
+  sessionStorage.setItem('filters', JSON.stringify(currentFilter))
+  navigate(getCurrentMenuItem.path, { state: { fromMenu: Date.now() } });
+}
 
   return (
     <nav className="flex flex-col mb-3 lg:items-center gap-6 lg:flex-row lg:mb-0">

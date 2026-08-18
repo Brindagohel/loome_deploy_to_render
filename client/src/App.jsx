@@ -39,10 +39,7 @@ function App() {
   }, [dispatch]);
 
   if (isLoading) return (
-    // <div className="flex items-center justify-center min-h-screen">
-    //   <p className="text-lg font-medium">Loading...</p>
-    // </div>
-<Skeleton className="h-[600] w-[800] bg-black animate-pulse rounded-md" />
+    <Skeleton className="h-screen w-screen bg-neutral-900/90 animate-pulse" />
   );
 
   return (

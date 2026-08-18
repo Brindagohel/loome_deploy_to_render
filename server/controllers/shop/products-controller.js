@@ -3,21 +3,29 @@ const Product = require('../../models/products')
 const getFilteredProducts = async (req , res) => {
     try{
 
-        const { category,gender, brand, sortBy = "price-lowtohigh" } = req.query;
+        const { category, gender, brand, price, sortBy = "price-lowtohigh" } = req.query;
 
-        let filters = {};
+            let filters = {};
 
-        if(category && category.length){
-            filters.category = {$in: category.split(',')}
-        }
+            if(category && category.length){
+                filters.category = {$in: category.split(',')}
+            }
 
-        if(gender && gender.length){
-            filters.gender = {$in: gender.split(',')}
-        }
+            if(gender && gender.length){
+                filters.gender = {$in: gender.split(',')}
+            }
 
-         if(brand && brand.length){
-            filters.brand = {$in: brand.split(',')}
-        }
+            if(brand && brand.length){
+                filters.brand = {$in: brand.split(',')}
+            }
+
+            if(price && price.length){
+                const priceRanges = price.split(',').map((range) => {
+                    const [min, max] = range.split('-').map(Number);
+                    return { price: { $gte: min, $lte: max } };
+                });
+                filters.$or = priceRanges;
+            }
 
         let sort = {}
 
