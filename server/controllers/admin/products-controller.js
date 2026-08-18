@@ -35,6 +35,7 @@ const addNewProduct = async(req,res)=>{
             title,
             description,
             category,
+            gender,
             brand,
             price,
             salePrice,
